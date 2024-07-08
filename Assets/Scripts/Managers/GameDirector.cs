@@ -4,33 +4,17 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
-    public bool isAppleEaten;
+    public MapGenerator mapGenerator;
 
-    public Transform player;
-    public float speed;
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        
+        mapGenerator.StartMapGenerator();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            player.position = player.position + Vector3.forward * speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            player.position = player.position - Vector3.forward * speed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            player.position = player.position + Vector3.left * speed;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            player.position = player.position - Vector3.left * speed;
-        }
+        
     }
 }
