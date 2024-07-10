@@ -255,13 +255,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44202775, y: -0, z: -0, w: 0.89700145}
-  m_LocalPosition: {x: 0, y: 10.43, z: -5.79}
+  m_LocalRotation: {x: 0.4126005, y: -0.19616081, z: 0.091471285, w: 0.8848247}
+  m_LocalPosition: {x: 21, y: 8.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 52.467, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -25, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,9 +468,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f994472c20e81c24aa3664683930d9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapXLength: 10
-  blockPrefab: {fileID: 4858520966092044853, guid: a51ba1334a35bcd40ab122b7007dc54d,
+  mapXLength: 30
+  mapZLength: 100
+  safeZoneLength: 5
+  asphaltBlockPrefab: {fileID: 4858520966092044853, guid: a51ba1334a35bcd40ab122b7007dc54d,
     type: 3}
+  grassBlockPrefab: {fileID: 4858520966092044853, guid: f03de2a26add0e947bf074a5060fd532,
+    type: 3}
+  treePrefab: {fileID: 3835678473871969921, guid: 2a74ad0505699e64d9153b8461b89d9c,
+    type: 3}
+  lastRowCount: 0
+  treeSpawnChance: 0.2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
