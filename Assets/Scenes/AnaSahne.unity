@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   karakterHareketEdiyorMu: 0
+  karakterHareketSuresi: 0.2
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
