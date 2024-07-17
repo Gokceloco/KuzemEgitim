@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4858520966092044853}
+  - component: {fileID: -675437617352834616}
   m_Layer: 0
   m_Name: Asphalt Block
   m_TagString: Untagged
@@ -116,6 +117,19 @@ Transform:
   - {fileID: 963396015921797099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-675437617352834616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661997793044294785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fbc9d6b98e248e42bebec53271bd619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serit: {fileID: 3781163327532298512}
 --- !u!1 &3781163327532298512
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 3781163327532298512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.005, y: 0, z: 0.008}
+  m_LocalPosition: {x: 0.005, y: 0, z: -0.5}
   m_LocalScale: {x: 0.6527067, y: 0.03304, z: 0.091874115}
   m_ConstrainProportionsScale: 0
   m_Children: []

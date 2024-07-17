@@ -424,6 +424,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &1140199080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140199081}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140199081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140199080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.955128, y: -2.0867007, z: 20.66293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898613164
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,12 +499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f994472c20e81c24aa3664683930d9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1140199081}
   mapXLength: 30
   mapZLength: 100
   safeZoneLength: 5
-  asphaltBlockPrefab: {fileID: 4858520966092044853, guid: a51ba1334a35bcd40ab122b7007dc54d,
+  asphaltBlockPrefab: {fileID: -675437617352834616, guid: a51ba1334a35bcd40ab122b7007dc54d,
     type: 3}
-  grassBlockPrefab: {fileID: 4858520966092044853, guid: f03de2a26add0e947bf074a5060fd532,
+  grassBlockPrefab: {fileID: 7993534696806931454, guid: f03de2a26add0e947bf074a5060fd532,
     type: 3}
   treePrefab: {fileID: 3835678473871969921, guid: 2a74ad0505699e64d9153b8461b89d9c,
     type: 3}
@@ -486,3 +518,4 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 11406410}
+  - {fileID: 1140199081}
