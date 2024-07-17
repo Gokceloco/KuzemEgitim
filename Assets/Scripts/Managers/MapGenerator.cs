@@ -11,6 +11,8 @@ public class MapGenerator : MonoBehaviour
 
     public int safeZoneLength;
 
+    public Block denemeObjesi;
+
     public Block asphaltBlockPrefab;
     public Block grassBlockPrefab;
 
