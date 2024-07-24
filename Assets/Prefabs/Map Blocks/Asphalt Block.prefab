@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 237319943177295605}
   - component: {fileID: 7833012542712014344}
   - component: {fileID: 5449320342240832770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4858520966092044853}
   - component: {fileID: -675437617352834616}
-  m_Layer: 0
+  - component: {fileID: 8170233879237501811}
+  m_Layer: 6
   m_Name: Asphalt Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,6 +131,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serit: {fileID: 3781163327532298512}
+--- !u!65 &8170233879237501811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661997793044294785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &3781163327532298512
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +163,7 @@ GameObject:
   - component: {fileID: 963396015921797099}
   - component: {fileID: 301105610420522769}
   - component: {fileID: 7783403401527120515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

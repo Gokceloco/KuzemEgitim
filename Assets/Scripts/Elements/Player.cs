@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     private Vector3 _dokunmaNoktasi;
     private Vector3 _birakmaNoktasi;
 
+    public LayerMask layerMask;
+
     private void Update()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 50, Color.red);
         if (karakterHareketEdiyorMu)
         {
             return;
@@ -40,17 +40,27 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _dokunmaNoktasi = Input.mousePosition;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 100, layerMask))
+            {
+                _dokunmaNoktasi = hit.point;
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            _birakmaNoktasi = Input.mousePosition;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 100, layerMask))
+            {
+                _birakmaNoktasi = hit.point;
+            }
             MoveCharacter(_birakmaNoktasi - _dokunmaNoktasi);
         }
     }   
     void MoveCharacter(Vector3 direction)
     {
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
         {
             if (direction.x < 0)
             {
@@ -63,7 +73,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (direction.y < 0)
+            if (direction.z < 0)
             {
                 MoveDown();
             }
