@@ -22,6 +22,8 @@ public class MapGenerator : MonoBehaviour
 
     public float treeSpawnChance;
 
+    public Car carPrefab;
+
     public void StartMapGenerator()
     {
         GenerateMap();
@@ -63,9 +65,28 @@ public class MapGenerator : MonoBehaviour
                 newBlock.SeritiGizle();
             }
         }
+
+        StartCoroutine(
+            GenerateCarCoroutine(
+                Random.value < .5f, 
+                Random.Range(7f, 13f), 
+                Random.Range(3f, 10f), 
+                lastRowCount));
+
         lastRowCount += 1;
-        // eger bu ilk asfalt ise þeriti kaldýr
     }
+
+    IEnumerator GenerateCarCoroutine(bool toLeft, float carTravelDuration, float carGenerationFreq, int row)
+    {
+        while (true)
+        {
+            var newCar = Instantiate(carPrefab);
+            newCar.StartCar(row, toLeft, carTravelDuration);
+            yield return new WaitForSeconds(carGenerationFreq);
+        }
+    }
+
+
     public void GenerateGrassRow()
     {
         for (int i = 0; i < mapXLength; i++)

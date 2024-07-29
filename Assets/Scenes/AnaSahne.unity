@@ -195,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 277803589}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19, y: 0, z: 3}
+  m_LocalPosition: {x: 14, y: 0, z: 3}
   m_LocalScale: {x: 0.5, y: 0.8, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
   karakterHareketEdiyorMu: 0
-  karakterHareketSuresi: 0.2
+  karakterHareketSuresi: 0.15
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -814,6 +814,8 @@ MonoBehaviour:
     type: 3}
   lastRowCount: 0
   treeSpawnChance: 0.2
+  carPrefab: {fileID: -8462373633872135140, guid: 1a6b4eacb7deb884cb81da75802b2584,
+    type: 3}
 --- !u!1 &2018340167
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +842,7 @@ Transform:
   m_GameObject: {fileID: 2018340167}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19, y: 0, z: 3}
+  m_LocalPosition: {x: 14, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
