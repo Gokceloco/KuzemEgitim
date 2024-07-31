@@ -55,9 +55,28 @@ public class Player : MonoBehaviour
             {
                 _birakmaNoktasi = hit.point;
             }
+            if ((_birakmaNoktasi - _dokunmaNoktasi).magnitude < .1f)
+            {
+                MoveCharacter(transform.forward);
+                return;
+            }
+
             MoveCharacter(_birakmaNoktasi - _dokunmaNoktasi);
         }
-    }   
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            GetComponent<BoxCollider>().enabled = false;
+            transform.DOScaleY(.01f, .1f);
+            transform.DOScaleX(1.1f, .1f);
+            transform.DOScaleZ(1.1f, .1f);
+        }
+    }
+
+
     void MoveCharacter(Vector3 direction)
     {
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
