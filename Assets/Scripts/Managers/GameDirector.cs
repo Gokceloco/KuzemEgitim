@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
+    public PlayerScoreUI playerScoreUI;
+
     public MapGenerator mapGenerator;
 
     // Start is called before the first frame update
@@ -12,9 +14,8 @@ public class GameDirector : MonoBehaviour
         mapGenerator.StartMapGenerator();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdatePlayerScore(int playerScore)
     {
-        
+        playerScoreUI.UpdatePlayerScore(playerScore);
     }
 }

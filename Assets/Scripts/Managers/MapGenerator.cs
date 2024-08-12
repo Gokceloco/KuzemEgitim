@@ -24,6 +24,8 @@ public class MapGenerator : MonoBehaviour
 
     public Car carPrefab;
 
+    public Transform carsParent;
+
     public void StartMapGenerator()
     {
         GenerateMap();
@@ -80,7 +82,7 @@ public class MapGenerator : MonoBehaviour
     {
         while (true)
         {
-            var newCar = Instantiate(carPrefab);
+            var newCar = Instantiate(carPrefab, carsParent);
             newCar.StartCar(row, toLeft, carTravelDuration);
             yield return new WaitForSeconds(carGenerationFreq);
         }

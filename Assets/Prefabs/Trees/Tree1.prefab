@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3835678473871969921}
-  - component: {fileID: 5965310628803448030}
-  m_Layer: 0
+  - component: {fileID: 596723471775551718}
+  m_Layer: 3
   m_Name: Tree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4416184613041048021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5965310628803448030
+--- !u!65 &596723471775551718
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.6640933, z: 1}
-  m_Center: {x: 0, y: 0.85568106, z: 0}
+  m_Size: {x: 1, y: 1.7281436, z: 1}
+  m_Center: {x: 0, y: 0.8623703, z: 0}
 --- !u!1 &7648548201804507252
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 3845485443017612494}
   - component: {fileID: 2213352934295155310}
   - component: {fileID: 718843467975050190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4416184613041048021}
   - component: {fileID: 4432711176836941700}
   - component: {fileID: 1837116347767920718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}

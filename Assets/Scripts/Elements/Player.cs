@@ -5,29 +5,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameDirector gameDirector;
+
     public Camera mainCamera;
 
     public bool karakterHareketEdiyorMu;
+    public bool karakterOyunuKaybettiMi;
     public float karakterHareketSuresi;
 
     private Vector3 _dokunmaNoktasi;
     private Vector3 _birakmaNoktasi;
 
     public LayerMask layerMask;
+    public LayerMask treeLayerMask;
+
+    public int playerScore;
+
+    public void ResetPlayer()
+    {
+        karakterHareketEdiyorMu = false;
+        karakterOyunuKaybettiMi = false;
+    }
 
     private void Update()
     {
-        if (karakterHareketEdiyorMu)
+        if (karakterOyunuKaybettiMi || karakterHareketEdiyorMu)
         {
             return;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            MoveUp();
+            MoveForward();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            MoveDown();
+            MoveBack();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -69,10 +81,13 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
+            karakterOyunuKaybettiMi = true;
             GetComponent<BoxCollider>().enabled = false;
+            transform.DOKill();
             transform.DOScaleY(.01f, .1f);
             transform.DOScaleX(1.1f, .1f);
             transform.DOScaleZ(1.1f, .1f);
+            transform.DOMoveY(0, .1f);
         }
     }
 
@@ -94,11 +109,11 @@ public class Player : MonoBehaviour
         {
             if (direction.z < 0)
             {
-                MoveDown();
+                MoveBack();
             }
             else
             {
-                MoveUp();
+                MoveForward();
             }
         }
     }
@@ -115,6 +130,11 @@ public class Player : MonoBehaviour
 
     private void MoveRight()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, 1, treeLayerMask))
+        {
+            return;
+        }
         transform.DOMoveX(transform.position.x + 1, karakterHareketSuresi).OnComplete(DoSquashAnimation);
         karakterHareketEdiyorMu = true;
         transform.LookAt(transform.position + Vector3.right);
@@ -122,24 +142,44 @@ public class Player : MonoBehaviour
     }
     private void MoveLeft()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, 1, treeLayerMask))
+        {
+            return;
+        }
         transform.DOMoveX(transform.position.x - 1, karakterHareketSuresi).OnComplete(DoSquashAnimation);
         karakterHareketEdiyorMu = true;
         transform.LookAt(transform.position + Vector3.left);
         DoJumpAnimation();
     }
-    private void MoveDown()
+    private void MoveBack()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, 1, treeLayerMask))
+        {
+            return;
+        }
         transform.DOMoveZ(transform.position.z - 1, karakterHareketSuresi).OnComplete(DoSquashAnimation);
         karakterHareketEdiyorMu = true;
         transform.LookAt(transform.position + Vector3.back);
         DoJumpAnimation();
     }
-    private void MoveUp()
+    private void MoveForward()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, 1, treeLayerMask))
+        {
+            return;
+        }
         transform.DOMoveZ(transform.position.z + 1, karakterHareketSuresi).OnComplete(DoSquashAnimation);
         karakterHareketEdiyorMu = true;
         transform.LookAt(transform.position + Vector3.forward);
         DoJumpAnimation();
+        if (playerScore < transform.position.z - 2)
+        {
+            playerScore = Mathf.RoundToInt(transform.position.z - 2);
+            gameDirector.UpdatePlayerScore(playerScore);
+        }
     }
     private void DoJumpAnimation()
     {
