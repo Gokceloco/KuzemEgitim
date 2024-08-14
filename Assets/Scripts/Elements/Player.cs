@@ -25,6 +25,13 @@ public class Player : MonoBehaviour
     {
         karakterHareketEdiyorMu = false;
         karakterOyunuKaybettiMi = false;
+        transform.DOKill();
+        transform.position = new Vector3(14,0,3);
+        transform.localScale = new Vector3(.5f,.8f,.5f);
+        transform.LookAt(transform.position + Vector3.forward);
+        GetComponent<BoxCollider>().enabled = true;
+        playerScore = 0;
+        gameDirector.UpdatePlayerScore(playerScore);
     }
 
     private void Update()

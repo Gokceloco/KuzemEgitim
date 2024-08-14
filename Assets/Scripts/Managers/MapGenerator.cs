@@ -106,4 +106,9 @@ public class MapGenerator : MonoBehaviour
         }
         lastRowCount += 1;
     }
+
+    internal void DeleteMap()
+    {
+        throw new System.NotImplementedException();
+    }
 }

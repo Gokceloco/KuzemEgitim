@@ -170,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScoreUI: {fileID: 123209841}
   mapGenerator: {fileID: 1898613166}
+  player: {fileID: 277803593}
+  cameraHolder: {fileID: 2018340169}
 --- !u!1 &123209838
 GameObject:
   m_ObjectHideFlags: 0
