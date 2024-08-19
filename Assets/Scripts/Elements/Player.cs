@@ -23,8 +23,7 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-        karakterHareketEdiyorMu = false;
-        karakterOyunuKaybettiMi = false;
+        Invoke(nameof(HareketKilitleriniKaldir), .5f);
         transform.DOKill();
         transform.position = new Vector3(14,0,3);
         transform.localScale = new Vector3(.5f,.8f,.5f);
@@ -32,6 +31,12 @@ public class Player : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
         playerScore = 0;
         gameDirector.UpdatePlayerScore(playerScore);
+    }
+
+    private void HareketKilitleriniKaldir()
+    {
+        karakterHareketEdiyorMu = false;
+        karakterOyunuKaybettiMi = false;
     }
 
     private void Update()
@@ -79,7 +84,6 @@ public class Player : MonoBehaviour
                 MoveCharacter(transform.forward);
                 return;
             }
-
             MoveCharacter(_birakmaNoktasi - _dokunmaNoktasi);
         }
     }
@@ -88,17 +92,21 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            karakterOyunuKaybettiMi = true;
-            GetComponent<BoxCollider>().enabled = false;
-            transform.DOKill();
-            transform.DOScaleY(.01f, .1f);
-            transform.DOScaleX(1.1f, .1f);
-            transform.DOScaleZ(1.1f, .1f);
-            transform.DOMoveY(0, .1f);
+            PlayerFailed();
         }
     }
 
-
+    private void PlayerFailed()
+    {
+        karakterOyunuKaybettiMi = true;
+        GetComponent<BoxCollider>().enabled = false;
+        transform.DOKill();
+        transform.DOScaleY(.01f, .1f);
+        transform.DOScaleX(1.1f, .1f);
+        transform.DOScaleZ(1.1f, .1f);
+        transform.DOMoveY(0, .1f);
+        gameDirector.failUI.Show();
+    }
     void MoveCharacter(Vector3 direction)
     {
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
@@ -124,17 +132,14 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     void DoSquashAnimation()
     {
         transform.DOScaleY(.5f, .05f).SetLoops(2, LoopType.Yoyo).OnComplete(KarakterHareketiniBitir);
     }
-
     void KarakterHareketiniBitir()
     {
         karakterHareketEdiyorMu = false;
     }
-
     private void MoveRight()
     {
         RaycastHit hit;
