@@ -31,18 +31,18 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         // Player Position Resetle
         player.ResetPlayer();
         
-        // Kameranın pozisyonunu resetle
+        // KameranÄ±n pozisyonunu resetle
         cameraHolder.ResetCameraHolder();
 
-        // Haritayı Sil
-        //mapGenerator.DeleteMap();
+        // HaritayÄ± Sil
+        mapGenerator.DeleteMap();
 
-        // Haritayı Yeniden Oluştur
-        // Player Skorunu 0la
+        // HaritayÄ± Yeniden OluÅŸtur
+        mapGenerator.GenerateMap();
     }
 }

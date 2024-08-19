@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     public Transform map;
+    public Transform carsParent;
 
     public int mapXLength;
     public int mapZLength;
@@ -22,9 +23,9 @@ public class MapGenerator : MonoBehaviour
 
     public float treeSpawnChance;
 
-    public Car carPrefab;
+    public Car carPrefab;    
 
-    public Transform carsParent;
+    public List<Coroutine> carCoroutines = new List<Coroutine>();
 
     public void StartMapGenerator()
     {
@@ -68,16 +69,12 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        StartCoroutine(
-            GenerateCarCoroutine(
-                Random.value < .5f, 
-                Random.Range(7f, 13f), 
-                Random.Range(3f, 10f), 
-                lastRowCount));
+        var newCoroutine = StartCoroutine(GenerateCarCoroutine(
+                Random.value < .5f, Random.Range(7f, 13f), Random.Range(3f, 10f), lastRowCount));
+        carCoroutines.Add(newCoroutine);
 
         lastRowCount += 1;
     }
-
     IEnumerator GenerateCarCoroutine(bool toLeft, float carTravelDuration, float carGenerationFreq, int row)
     {
         while (true)
@@ -87,8 +84,6 @@ public class MapGenerator : MonoBehaviour
             yield return new WaitForSeconds(carGenerationFreq);
         }
     }
-
-
     public void GenerateGrassRow()
     {
         for (int i = 0; i < mapXLength; i++)
@@ -107,8 +102,21 @@ public class MapGenerator : MonoBehaviour
         lastRowCount += 1;
     }
 
-    internal void DeleteMap()
+    public void DeleteMap()
     {
-        throw new System.NotImplementedException();
+        foreach (Transform t in map)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (Transform t in carsParent)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (Coroutine c in carCoroutines)
+        {
+            StopCoroutine(c);
+        }
+        carCoroutines.Clear();
+        lastRowCount = 0;
     }
 }

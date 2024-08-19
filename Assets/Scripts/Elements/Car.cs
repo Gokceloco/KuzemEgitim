@@ -33,4 +33,9 @@ public class Car : MonoBehaviour
         transform.DOKill();
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 }
