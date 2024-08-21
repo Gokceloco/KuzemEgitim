@@ -15,16 +15,26 @@ public class FailUI : MonoBehaviour
 
     public void Show()
     {
+        gameObject.SetActive(true);
         canvasGroup.DOFade(1, 1f);
     }
 
     public void Hide()
     {
-        canvasGroup.DOFade(0, .2f);
+        canvasGroup.DOFade(0, .2f).OnComplete(SetActiveFalse);
+    }
+
+    void SetActiveFalse()
+    {
+        gameObject.SetActive(false);
     }
 
     public void RestartButtonClicked()
     {
         gameDirector.RestartLevel();
+    }
+    public void PrintDebug()
+    {
+        print("button clicked");
     }
 }
