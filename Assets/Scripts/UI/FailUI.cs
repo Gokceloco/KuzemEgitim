@@ -2,14 +2,18 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FailUI : MonoBehaviour
 {
     public GameDirector gameDirector;
-    public CanvasGroup canvasGroup;
+    private CanvasGroup canvasGroup;
+
+    public Button restartButton;
 
     public void RestartFailUI()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
         Hide();
     }
 
@@ -17,6 +21,9 @@ public class FailUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         canvasGroup.DOFade(1, 1f);
+        restartButton.transform.DOKill();
+        restartButton.transform.localScale = Vector3.one;
+        restartButton.transform.DOScale(1.1f, .5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void Hide()
@@ -32,9 +39,5 @@ public class FailUI : MonoBehaviour
     public void RestartButtonClicked()
     {
         gameDirector.RestartLevel();
-    }
-    public void PrintDebug()
-    {
-        print("button clicked");
     }
 }

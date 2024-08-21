@@ -41,6 +41,6 @@ public class GameDirector : MonoBehaviour
         player.ResetPlayer();
         cameraHolder.ResetCameraHolder();
         mapGenerator.DeleteMap();
-        mapGenerator.GenerateMap();
+        mapGenerator.AddNewRows(mapGenerator.mapZLength);
     }
 }

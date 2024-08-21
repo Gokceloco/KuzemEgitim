@@ -192,6 +192,11 @@ public class Player : MonoBehaviour
             playerScore = Mathf.RoundToInt(transform.position.z - 2);
             gameDirector.UpdatePlayerScore(playerScore);
         }
+
+        if (gameDirector.mapGenerator.lastRowCount - transform.position.z <= 20)
+        {
+            gameDirector.mapGenerator.AddNewRows(10);
+        }
     }
     private void DoJumpAnimation()
     {

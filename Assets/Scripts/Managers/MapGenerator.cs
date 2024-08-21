@@ -27,13 +27,17 @@ public class MapGenerator : MonoBehaviour
 
     public List<Coroutine> carCoroutines = new List<Coroutine>();
 
+    public int difficultyScalingRowCount;
+    public float minCarGenerationFreq;
+    public float minCarTravelDuration;
+
     public void StartMapGenerator()
     {
-        GenerateMap();
+        AddNewRows(mapZLength);
     }
-    public void GenerateMap()
+    public void AddNewRows(int rowCount)
     {
-        for (int z = 0; z < mapZLength; z++)
+        for (int z = 0; z < rowCount; z++)
         {
             if (z < safeZoneLength)
             {
@@ -69,8 +73,28 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
+        var carTravelDuration = Random.Range(8f, 14f) - lastRowCount / difficultyScalingRowCount;
+        var carGenerationFreq = Random.Range(4f, 11f) - lastRowCount / difficultyScalingRowCount;
+
+        carTravelDuration = Mathf.Max(carTravelDuration, minCarTravelDuration - Random.Range(0f,1f));
+        carGenerationFreq = Mathf.Max(carGenerationFreq, minCarGenerationFreq - Random.Range(0f, 1f));
+
+        if (lastRowCount > 20 && Random.value < .2f)
+        {
+            if (Random.value < .5f)
+            {
+                carTravelDuration = Random.Range(12f, 14f);
+                carGenerationFreq = Random.Range(2f, 3f);
+            }
+            else
+            {
+                carTravelDuration = Random.Range(3f, 4f);
+                carGenerationFreq = Random.Range(10f, 11f);
+            }            
+        }
+
         var newCoroutine = StartCoroutine(GenerateCarCoroutine(
-                Random.value < .5f, Random.Range(7f, 13f), Random.Range(3f, 10f), lastRowCount));
+                Random.value < .5f, carTravelDuration, carGenerationFreq, lastRowCount));
         carCoroutines.Add(newCoroutine);
 
         lastRowCount += 1;

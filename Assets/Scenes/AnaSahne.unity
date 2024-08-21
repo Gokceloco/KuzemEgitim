@@ -588,7 +588,7 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   karakterHareketEdiyorMu: 0
   karakterOyunuKaybettiMi: 0
-  karakterHareketSuresi: 0.15
+  karakterHareketSuresi: 0.12
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -642,7 +642,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.3962568, z: 1}
+  m_Size: {x: 0.7, y: 1.4, z: 0.7}
   m_Center: {x: 0, y: 0.695272, z: 0}
 --- !u!1 &330585543
 GameObject:
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 11406411}
-  canvasGroup: {fileID: 1444772124}
+  restartButton: {fileID: 31071336}
 --- !u!225 &1444772124
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1519,7 +1519,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444772121}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1821,6 +1821,9 @@ MonoBehaviour:
   treeSpawnChance: 0.2
   carPrefab: {fileID: -8462373633872135140, guid: 1a6b4eacb7deb884cb81da75802b2584,
     type: 3}
+  difficultyScalingRowCount: 10
+  minCarGenerationFreq: 2.5
+  minCarTravelDuration: 3
 --- !u!1 &2018340167
 GameObject:
   m_ObjectHideFlags: 0
