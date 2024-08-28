@@ -33,6 +33,24 @@ public class GameDirector : MonoBehaviour
         {
             RestartLevel();
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DeleteRow(10);
+        }
+    }
+
+    public void DeleteRow(int rowCount)
+    {
+        StartCoroutine(DeleteRowCoroutine(rowCount));
+    }
+
+    IEnumerator DeleteRowCoroutine(int rowCount)
+    {
+        for (int i = 0; i < rowCount; i++)
+        {
+            mapGenerator.DeleteRow();
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
     public void RestartLevel()
