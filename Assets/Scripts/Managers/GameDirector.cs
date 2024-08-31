@@ -7,6 +7,7 @@ public class GameDirector : MonoBehaviour
 {
     [Header("Managers")]
     public MapGenerator mapGenerator;
+    public CoinManager coinManager;
 
     [Header("UI")]
     public PlayerScoreUI playerScoreUI;
@@ -33,9 +34,15 @@ public class GameDirector : MonoBehaviour
         {
             RestartLevel();
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            DeleteRow(10);
+            coinManager.EarnCoins(1);
+            print(coinManager.GetCoinCount());
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            coinManager.ResetCoinCount();
+            print(coinManager.GetCoinCount());
         }
     }
 

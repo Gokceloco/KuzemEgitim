@@ -18,12 +18,12 @@ public class MapGenerator : MonoBehaviour
     public Block grassBlockPrefab;
 
     public Transform treePrefab;
+    public Car carPrefab;
+    public Transform coinPrefab;
 
     public int lastRowCount;
 
-    public float treeSpawnChance;
-
-    public Car carPrefab;    
+    public float treeSpawnChance;      
 
     public List<Coroutine> carCoroutines = new List<Coroutine>();
 
@@ -124,6 +124,11 @@ public class MapGenerator : MonoBehaviour
                 {
                     var newTree = Instantiate(treePrefab, newRow.transform);
                     newTree.position = new Vector3(i, 0, lastRowCount);
+                }
+                else if (Random.value < .2f)
+                {
+                    var newCoin = Instantiate(coinPrefab, newRow.transform);
+                    newCoin.position = new Vector3(i, 0, lastRowCount);
                 }
             }
         }
