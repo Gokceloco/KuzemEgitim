@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
         {
             CollectCoin();
             other.gameObject.SetActive(false);
+            gameDirector.audioManager.PlayPositiveSound();
         }
     }
 
@@ -217,5 +218,6 @@ public class Player : MonoBehaviour
         transform.DOScaleY(1f, karakterHareketSuresi * .5f).SetLoops(2, LoopType.Yoyo);
         transform.DOScaleX(.3f, karakterHareketSuresi * .5f).SetLoops(2, LoopType.Yoyo);
         transform.DOScaleZ(.3f, karakterHareketSuresi * .5f).SetLoops(2, LoopType.Yoyo);
+        gameDirector.audioManager.PlayJumpSound();
     }
 }
