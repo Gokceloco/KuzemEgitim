@@ -13,10 +13,14 @@ public class CarDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
         if (other.CompareTag("Car"))
         {
-            player.gameDirector.audioManager.PlayHornSound();
+            var car = other.GetComponent<Car>();
+            if ((car.isCarDirectionLeft && transform.position.x < other.transform.position.x) 
+                || (!car.isCarDirectionLeft && transform.position.x > other.transform.position.x))
+            {
+                player.gameDirector.audioManager.PlayHornSound();
+            }
         }
     }
 }

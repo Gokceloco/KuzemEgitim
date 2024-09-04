@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     public int playerScore;
 
+    public ParticleSystem jumpPS;
+
     public void ResetPlayer()
     {
         Invoke(nameof(HareketKilitleriniKaldir), .5f);
@@ -106,7 +108,7 @@ public class Player : MonoBehaviour
     private void CollectCoin()
     {
         gameDirector.coinManager.EarnCoins(1);
-        print(gameDirector.coinManager.GetCoinCount());
+        gameDirector.coinUI.UpdateCoinCount();
     }
 
     private void PlayerFailed()
@@ -119,6 +121,7 @@ public class Player : MonoBehaviour
         transform.DOScaleZ(1.1f, .1f);
         transform.DOMoveY(0, .1f);
         gameDirector.failUI.Show();
+        gameDirector.coinUI.Hide();
     }
     void MoveCharacter(Vector3 direction)
     {
@@ -148,6 +151,7 @@ public class Player : MonoBehaviour
     void DoSquashAnimation()
     {
         transform.DOScaleY(.5f, .05f).SetLoops(2, LoopType.Yoyo).OnComplete(KarakterHareketiniBitir);
+        jumpPS.Play();
     }
     void KarakterHareketiniBitir()
     {
