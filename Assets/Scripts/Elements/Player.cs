@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
             CollectCoin();
             other.gameObject.SetActive(false);
             gameDirector.audioManager.PlayPositiveSound();
+            gameDirector.fxManager.PlayCoinCollectParticles(other.transform.position);
         }
     }
 

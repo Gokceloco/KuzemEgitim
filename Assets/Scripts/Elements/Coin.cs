@@ -17,4 +17,8 @@ public class Coin : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 }

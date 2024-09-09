@@ -9,11 +9,13 @@ public class GameDirector : MonoBehaviour
     public MapGenerator mapGenerator;
     public CoinManager coinManager;
     public AudioManager audioManager;
+    public FXManager fxManager;
 
     [Header("UI")]
     public PlayerScoreUI playerScoreUI;
     public FailUI failUI; 
     public CoinUI coinUI;
+    public MainMenu mainMenu;
 
     [Header("Elements")]
     public Player player;
@@ -22,7 +24,10 @@ public class GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RestartLevel();
+        mainMenu.RestartMainMenu();
+        mainMenu.Show();
+
+        //RestartLevel();
     }
 
     public void UpdatePlayerScore(int playerScore)

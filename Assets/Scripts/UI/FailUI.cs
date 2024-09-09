@@ -38,6 +38,8 @@ public class FailUI : MonoBehaviour
 
     public void RestartButtonClicked()
     {
-        gameDirector.RestartLevel();
+        print("in here");
+        gameDirector.mainMenu.Show();
+        Hide();
     }
 }
